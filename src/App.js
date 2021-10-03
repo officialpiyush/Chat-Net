@@ -14,7 +14,9 @@ function App() {
       <ProfileProvider>
         <Switch>
           <PublicRoute path="/signin" component={SignIn} />
-          <PrivateRoute path="/" component={Home} />
+          <PrivateRoute path="/">
+            <Home />
+          </PrivateRoute>
         </Switch>
       </ProfileProvider>
     </>

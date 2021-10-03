@@ -14,9 +14,6 @@ const PublicRoute = ({ component, ...routeProps }) => {
     );
   }
 
-  if (profile && !isLoading) {
-    return <Redirect to="/signin" />;
-  }
   return <Route {...routeProps} component={component} />;
 };
 

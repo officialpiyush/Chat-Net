@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import React from 'react';
+import { Redirect, Route } from 'react-router';
 import { Container, Loader } from 'rsuite';
 import { useProfile } from '../context/profile.context';
 
-const PrivateRoute = ({ component, ...routeProps }) => {
+const PrivateRoute = ({ children, ...routeProps }) => {
   const { profile, isLoading } = useProfile();
 
   if (isLoading && !profile) {
@@ -17,7 +17,7 @@ const PrivateRoute = ({ component, ...routeProps }) => {
   if (!profile && !isLoading) {
     return <Redirect to="/signin" />;
   }
-  return <Route {...routeProps} component={component} />;
+  return <Route {...routeProps}>{children}</Route>;
 };
 
 export default PrivateRoute;
